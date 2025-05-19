@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     font-family: 'Manrope', sans-serif;
     font-size: 28px;
     background-color: var(--color-blue950);
@@ -80,6 +80,7 @@ h1 {
 }
 
 .advice-button:active {
+    box-shadow: 0 0 50px 5px var(--color-green300);
     transform: translate(-32px, 3px);
 }
 
