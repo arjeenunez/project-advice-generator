@@ -11,9 +11,8 @@ const toggleSpinner = element => {
     element.querySelector('.advice-text').classList.toggle('hidden');
 };
 
-const toggleTouchHover = function (element) {
-    console.log('toggled');
-    element.classList.toggle('.advice-button-touch-hover');
+const toggleHover = function () {
+    this.classList.toggle('advice-button-hover');
 };
 
 //prettier-ignore
@@ -26,15 +25,19 @@ const generateAdvice = async function (element) {
 };
 
 const autoLoadAdvice = async function () {
-    await generateAdvice(this.document);
+    const button = document.querySelector('.advice-button');
+    const isMobile = window.innerWidth <= 800;
+    const hoverEvent = isMobile ? ['touchstart', 'touchend'] : ['mouseenter', 'mouseleave'];
+    hoverEvent.forEach(event => button.addEventListener(event, toggleHover));
+    if (isMobile) {
+        button.setAttribute('data-mobile', true);
+    }
+    await generateAdvice(document);
 };
 
 document.querySelector('.card-advice').addEventListener('click', function (evt) {
-    console.log('Hello');
     const isButton = evt.target.closest('.advice-button');
     if (isButton?.classList.contains('advice-button')) {
-        isButton.addEventListener('touchstart', toggleTouchHover(this));
-        isButton.addEventListener('touchend', toggleTouchHover(this));
         generateAdvice(this);
     }
 });

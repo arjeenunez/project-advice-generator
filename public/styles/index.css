@@ -60,6 +60,7 @@ h1 {
 }
 
 .advice-button {
+    user-select: none; /* Prevents user from accidentally selecting the img svg*/
     position: absolute;
     bottom: -32px;
     left: 50%;
@@ -75,12 +76,11 @@ h1 {
     transition: box-shadow ease-in-out 0.1s;
 }
 
-.advice-button:hover {
+.advice-button-hover {
     box-shadow: 0 0 50px 5px var(--color-green300);
 }
 
 .advice-button:active {
-    box-shadow: 0 0 50px 5px var(--color-green300);
     transform: translate(-32px, 3px);
 }
 
